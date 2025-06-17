@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Firma</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #00833e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .firma {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px dashed #ccc;
+    }
+    .icon {
+      height: 14px;
+      vertical-align: middle;
+      filter: brightness(0) saturate(100%) invert(33%) sepia(91%) saturate(504%) hue-rotate(75deg) brightness(92%) contrast(97%);
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Generador de Firma de Correo</h2>
+
+  <label>Nombre</label>
+  <input type="text" id="nombre">
+
+  <label>Cargo</label>
+  <input type="text" id="cargo">
+
+  <label>Teléfono</label>
+  <input type="text" id="telefono">
+
+  <label>Email</label>
+  <input type="text" id="email">
+
+  <label>Website</label>
+  <input type="text" id="web">
+
+  <label>LinkedIn</label>
+  <input type="text" id="linkedin">
+
+  <label>Instagram</label>
+  <input type="text" id="instagram">
+
+  <label>WhatsApp</label>
+  <input type="text" id="whatsapp">
+
+  <label>URL del logo</label>
+  <input type="text" id="logo">
+
+  <button onclick="generarFirma()">Generar Firma</button>
+
+  <div class="firma" id="output"></div>
+
+  <script>
+    function generarFirma() {
+      const nombre = document.getElementById('nombre').value;
+      const cargo = document.getElementById('cargo').value;
+      const telefono = document.getElementById('telefono').value;
+      const email = document.getElementById('email').value;
+      const web = document.getElementById('web').value;
+      const linkedin = document.getElementById('linkedin').value;
+      const instagram = document.getElementById('instagram').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const logo = document.getElementById('logo').value;
+
+      const icon = (url) => `<img src="${url}" class="icon">`;
+
+      const firmaHTML = `
+      <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.5;">
+        <img src="${logo}" alt="Logo" style="height: 60px; margin-bottom: 8px;"><br>
+        <strong style="font-size: 16px;">${nombre}</strong><br>
+        <span style="font-size: 14px;">${cargo}</span><br><br>
+
+        ${icon('https://cdn-icons-png.flaticon.com/512/597/597177.png')} ${telefono}<br>
+        ${icon('https://cdn-icons-png.flaticon.com/512/561/561127.png')} <a href="mailto:${email}" style="color:#333;">${email}</a><br>
+        ${icon('https://cdn-icons-png.flaticon.com/512/1006/1006771.png')} <a href="${web}" target="_blank" style="color:#333;">${web}</a><br>
+        ${icon('https://cdn-icons-png.flaticon.com/512/145/145807.png')} <a href="${linkedin}" target="_blank" style="color:#333;">LinkedIn</a><br>
+        ${icon('https://cdn-icons-png.flaticon.com/512/2111/2111463.png')} <a href="${instagram}" target="_blank" style="color:#333;">Instagram</a><br>
+        ${icon('https://cdn-icons-png.flaticon.com/512/733/733585.png')} <a href="${whatsapp}" target="_blank" style="color:#333;">WhatsApp</a><br>
+      </div>`;
+
+      document.getElementById('output').innerHTML = firmaHTML;
+    }
+  </script>
+</body>
+</html>
